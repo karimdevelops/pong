@@ -8,6 +8,8 @@ VIRTUAL_HEIGHT = 243
 
 
 function love.load()
+
+    love.graphics.setDefaultFilter('nearest', 'nearest')
         
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT,
         {fullscreen = false,
@@ -15,16 +17,25 @@ function love.load()
         vsync = true
     })
 
-    love.window.setTitle("Pong")
+    scoreFont = love.graphics.newFont('fonts/font.ttf', 32)
+
+    love.graphics.setFont(scoreFont)
+
+    love.window.setTitle('Pong')
 
 end
 
+player1_score = 0
+player2_score = 0
 
 function love.draw()
 
     push:apply('start')
 
     love.graphics.clear(40/255, 45/255, 52/255, 255/255)
+    
+    love.graphics.print(player1_score, 256, 20)
+    love.graphics.print(player2_score, 156, 20)
 
     push:apply('end')
 
@@ -32,7 +43,7 @@ end
 
 function love.keypressed(key)
 
-    if key == "escape" then 
+    if key == 'escape' then 
         love.event.quit()
     end
 
