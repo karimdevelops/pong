@@ -17,7 +17,7 @@ function love.load()
         vsync = true
     })
 
-    scoreFont = love.graphics.newFont('fonts/font.ttf', 32)
+    scoreFont = love.graphics.newFont('fonts/font.ttf', 35)
 
     love.graphics.setFont(scoreFont)
 
